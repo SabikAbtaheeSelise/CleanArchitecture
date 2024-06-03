@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Application.Services.Authentication
+namespace CleanArchitecture.Application.Authentication.Common
 {
     public record AuthenticationResult(User user, string Token);
 }

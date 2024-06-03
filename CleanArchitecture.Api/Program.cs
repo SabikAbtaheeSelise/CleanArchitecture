@@ -1,6 +1,4 @@
 using CleanArchitecture.Api.Common.Errors;
-using CleanArchitecture.Api.Filters;
-using CleanArchitecture.Api.Middleware;
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Infrastructure;

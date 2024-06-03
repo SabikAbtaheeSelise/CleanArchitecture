@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArchitecture.Api.Controllers
 {
     [Route("/error")]
-    [ApiController]
-    public class ErrorsController : ControllerBase
+    public class ErrorsController : ApiController
     {
         public IActionResult Error()
         {

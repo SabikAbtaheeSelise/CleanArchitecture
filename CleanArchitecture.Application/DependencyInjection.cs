@@ -1,5 +1,4 @@
-﻿using CleanArchitecture.Application.Services.Authentication;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddMediatR(res=>res.RegisterServicesFromAssemblies(typeof(DependencyInjection).Assembly));
+
         return services;
     }
 }

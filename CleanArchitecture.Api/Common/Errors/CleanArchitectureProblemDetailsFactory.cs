@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CleanArchitecture.Api.Http;
+using ErrorOr;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -100,9 +102,12 @@ namespace CleanArchitecture.Api.Common.Errors
             {
                 problemDetails.Extensions["traceId"] = traceId;
             }
-            problemDetails.Extensions["custom"] = "Test custom";
+            var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
+            if(errors is not null)
+            {
+                problemDetails.Extensions.Add("errorCodes", errors.Select(e=>e.Code));
 
-
+            }
             _configure?.Invoke(new() { HttpContext = httpContext!, ProblemDetails = problemDetails });
         }
     }
